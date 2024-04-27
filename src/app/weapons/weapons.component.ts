@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AgentsService } from '../services/agents.service';
 
 @Component({
   selector: 'app-weapons',
@@ -9,4 +10,23 @@ import { Component } from '@angular/core';
 })
 export class WeaponsComponent {
 
+  _agent=  inject(AgentsService)
+
+  data: any= '';
+
+  constructor(
+   
+  ){
+    this.getItems();
+  }
+
+  getItems(){
+    this._agent.getItems().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.data = data;
+      }
+    })
+  }
 }
+

@@ -1,0 +1,27 @@
+<div class="page">
+    <header>LOGO</header>
+    <div id="nav-container">
+        <div class="bg"></div>
+        <div class="button" tabindex="0">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div id="nav-content" tabindex="0">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a routerLink="weapons">Weapons</a></li>
+                <li><a routerLink="maps">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li class="small"><a href="#">Facebook</a><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--Main principal de la pagina-->
+    <main>
+        <div class="content">
+            <router-outlet />
+        </div>
+    </main>
+</div>
