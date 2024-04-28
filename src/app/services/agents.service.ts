@@ -12,6 +12,6 @@ export class AgentsService {
   ) { }
 
   public getItems(): Observable<any>{
-    return this._http.get('https://valorant-api.com/v1/weapons');
+    return this._http.get('https://valorant-api.com/v1/agents');
   }
 }

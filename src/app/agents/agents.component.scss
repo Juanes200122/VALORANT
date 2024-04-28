@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100.. 1000&display=intercambiar');
+
+#tittle_page {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+    color: rgba(255, 0, 0, 0);
+    font-size: 80px;
+    font-family: "DM Sans", sans-serif;
+    rotate: 90deg;
+    transform: scaleX(1.5);
+}
+* {box-sizing: border-box;}
+
+.container {
+    overflow: hidden;
+    .lap1 {
+        width: 100%;
+        height: 75vh;
+        display: flex;
+
+        #previuw_page {
+            width: 400px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            #tittle_page {
+                position: relative;
+                left: 150px;               
+            }
+        }
+
+        .container_agents {
+            width: calc(100% - 400px);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0px 90px;
+            gap: 90px;
+            overflow: auto;
+
+            &::-webkit-scrollbar { width: 2px; }
+
+            &::-webkit-scrollbar-track {}
+
+            &::-webkit-scrollbar-thumb {}
+
+            .card {
+                min-width: 270px !important;
+                height: 500px;
+                position: relative;
+                transition: background-image 0.5s ease-in-out;
+                background-image: url(../../assets/image/stroke.png);
+                border-bottom: 2px solid #1F2326;
+                border-right: 2px solid #1F2326;
+
+
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    height: 100%;
+                    background-image: url(../../assets/image/Phoenix.png);
+                    width: 100%;
+
+                }
+
+                &:hover {
+                    background-image: url(../../assets/image/player.png);
+                }
+
+                &:hover .hability {
+                    background-color: #F8F8F8;
+                    border: 2px solid #1F2326;
+                }
+
+                &:hover .hability img {
+                    mix-blend-mode: difference;
+                }
+
+                &:hover .displayName h4 {
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: rgb(0, 0, 0);
+                    color: rgba(255, 0, 0, 0);
+                }
+
+
+                .displayName {
+                    color: white;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: end;
+                    z-index: 99;
+
+                    h4 {
+                        position: absolute;
+                        top: 0;
+                        left: -50px;
+                        rotate: 90deg;
+                        width: 100px;
+                        height: min-content;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: rgb(255, 255, 255);
+                        color: rgba(255, 0, 0, 0);
+                        font-size: 40px;
+                        font-family: "DM Sans", sans-serif;
+                        text-transform: uppercase;
+
+                    }
+                }
+
+                .bustoRetrato {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        overflow: unset;
+                    }
+                }
+
+                .hability {
+                    width: 100%;
+                    height: 70px;
+                    background-color: #1F2326;
+                    border: 1px solid white;
+                    position: absolute;
+                    bottom: -20px;
+                    right: -20px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    transition: background-color 0.5s ease-in-out;
+
+                    img {
+                        width: 35px;
+                    }
+                }
+            }
+        }
+    }
+
+    .lap2 {
+        width: 100%;
+        height: calc(100vh - 82vh);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        padding: 10px 0px;
+    }
+    .hability_per {
+        width: 350px;
+        height: 100%;
+        background-image: url(../../assets/image/Basic.png);  
+        background-repeat: no-repeat;   
+        background-size: cover;   
+        border-bottom: 2px solid #1F2326;
+        border-right: 2px solid #1F2326;
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        transition: height 0.5s ease-in-out, 
+        transform 0.5s ease-in-out, 
+        border-bottom 0.5s ease-in-out, 
+        border-right 0.5s ease-in-out;
+
+        &:hover {
+            height: 400px;
+            transform: translate(0px, -120px);
+            border-bottom: 1px solid #1F2326;
+            border-right: 3px solid #1F2326;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 70%;
+            background-color: #1F2326;
+            right: 50px;
+            bottom: -2px;
+        }
+
+        .description {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 10px;
+            .bap1 {
+                font-size: 25px;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: rgb(149, 149, 149);
+                font-family: "DM Sans", sans-serif;
+            }
+            .bap2 {
+
+            }
+            .bap3 {
+                font-size: 12px;
+            }
+        }
+        .displayIcon {
+            width: 30%;
+            position: relative;
+            padding: 20px;
+            img {
+                width: 100px;
+                mix-blend-mode: difference;
+            }
+        }
+
+    }
+}

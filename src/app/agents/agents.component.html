@@ -1,3 +1,71 @@
-<p>agents works!</p>
 
-{{data}}
+
+<div class="container">
+    <div class="lap1">
+        <div id="previuw_page">
+            <h2 id="tittle_page">AGENTS</h2>
+        </div>
+        <div class="container_agents" *ngIf="data">
+            <div class="card" *ngFor="let agent of data.data" id="{{ agent.uuid }}" (click)="guardarUuid(agent.uuid)">
+                <div class="displayName">
+                    <h4>{{ agent.displayName }}</h4>
+                </div>
+                <div class="bustoRetrato">
+                    <img src="{{ agent.fullPortrait }}" alt="" width="50px">
+                </div>
+                <div class="hability">
+                    <img *ngFor="let ability of agent.abilities" [src]="ability.displayIcon">                    
+                </div>
+            </div>                              
+        </div>
+    </div>
+    <div class="lap2">
+        <div class="hability_per" *ngFor="let ability of obtenerUUID()?.abilities; let i = index">
+            <div class="description">
+                <span class="bap1">{{ ability.displayName }}</span>
+                <span class="bap3">{{ ability.description }}</span>
+            </div>
+            <div class="displayIcon">
+                <img src="{{ ability.displayIcon }}" alt="">
+            </div>        
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div *ngIf="data">
+    <ul>
+      <li *ngFor="let agents of data.data" style="display: flex; align-items: center; gap: 30px;">
+        <strong>{{ agents.displayName }}</strong>
+        <img src="{{ agents.displayIcon }}" alt="" width="50px">
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="!data">
+    <p>Cargando datos...</p>
+  </div>-->
+
+
