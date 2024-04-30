@@ -8,23 +8,129 @@
             <div class="lap1">
                 <h2>SIDEARM</h2>
                 <div *ngFor="let weapon of dataWeapons.data" class="lap2">
-                    <div *ngIf="weapon.category === 'EEquippableCategory::Sidearm'" class="weapon-card">
-                        <img src="{{ weapon.displayIcon }}" alt=""> 
+                    <div *ngIf="weapon.category === 'EEquippableCategory::Sidearm'" class="weapon-card"
+                        id="{{ weapon.uuid }}" (click)="weaponUUID(weapon.uuid)">
+                        <img src="{{ weapon.killStreamIcon }}" alt="">
                         <div class="Name_pr">
-                            <h3 class="h4_primary">{{ weapon.displayName }}</h3>  
-                            <h5>${{ weapon.shopData.cost }}</h5>                       
+                            <h3 class="h4_primary">{{ weapon.displayName }}</h3>
+                            <h5>${{ weapon.shopData.cost }}</h5>
                         </div>
-                    </div>      
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="file_2 cont_dive"></div>
-        <div class="file_3 RIFLES"></div>
-        <div class="file_4 cont_dive"></div>
+        <div class="file_2 cont_dive">
+            <div class="lap1">
+                <h2>SMGS</h2>
+                <div *ngFor="let weapon of dataWeapons.data" class="lap2">
+                    <div *ngIf="weapon.category === 'EEquippableCategory::SMG'" class="weapon-card"
+                        id="{{ weapon.uuid }}" (click)="weaponUUID(weapon.uuid)">
+                        <img src="{{ weapon.killStreamIcon }}" alt="">
+                        <div class="Name_pr">
+                            <h3 class="h4_primary">{{ weapon.displayName }}</h3>
+                            <h5>${{ weapon.shopData.cost }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lap1" id="margin_top">
+                <h2>SHOTGUNS</h2>
+                <div *ngFor="let weapon of dataWeapons.data" class="lap2">
+                    <div *ngIf="weapon.category === 'EEquippableCategory::Shotgun'" class="weapon-card"
+                        id="{{ weapon.uuid }}" (click)="weaponUUID(weapon.uuid)">
+                        <img src="{{ weapon.killStreamIcon }}" alt="">
+                        <div class="Name_pr">
+                            <h3 class="h4_primary">{{ weapon.displayName }}</h3>
+                            <h5>${{ weapon.shopData.cost }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="file_3 RIFLES">
+            <div class="lap1">
+                <h2>RIFLES</h2>
+                <div *ngFor="let weapon of dataWeapons.data" class="lap2">
+                    <div *ngIf="weapon.category === 'EEquippableCategory::Rifle'" class="weapon-card"
+                        id="{{ weapon.uuid }}" (click)="weaponUUID(weapon.uuid)">
+                        <img src="{{ weapon.killStreamIcon }}" alt="">
+                        <div class="Name_pr">
+                            <h3 class="h4_primary">{{ weapon.displayName }}</h3>
+                            <h5>${{ weapon.shopData.cost }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="file_4 cont_dive">
+            <div class="lap1 overflow">
+                <h2>SNIPER</h2>
+                <div *ngFor="let weapon of dataWeapons.data" class="lap2">
+                    <div *ngIf="weapon.category === 'EEquippableCategory::Sniper'" class="weapon-card"
+                        id="{{ weapon.uuid }}" (click)="weaponUUID(weapon.uuid)">
+                        <img src="{{ weapon.killStreamIcon }}" alt="">
+                        <div class="Name_pr">
+                            <h3 class="h4_primary">{{ weapon.displayName }}</h3>
+                            <h5>${{ weapon.shopData.cost }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lap1" id="margin_top">
+                <h2>RIFLES</h2>
+                <div *ngFor="let weapon of dataWeapons.data" class="lap2">
+                    <div *ngIf="weapon.category === 'EEquippableCategory::Heavy'" class="weapon-card"
+                        id="{{ weapon.uuid }}" (click)="weaponUUID(weapon.uuid)">
+                        <img src="{{ weapon.killStreamIcon }}" alt="">
+                        <div class="Name_pr">
+                            <h3 class="h4_primary">{{ weapon.displayName }}</h3>
+                            <h5>${{ weapon.shopData.cost }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="file_5 MEELE"></div>
-    </div> 
+    </div>
 
- 
+    <div class="preview_weapons">
+        <div *ngIf="uuidWeapon" class="weapon-card">
+            <h1>Wepons Details</h1>
+            <img [src]="getSelectedWeapon()?.killStreamIcon" alt="">
+            <div class="Name_pr">
+                <h3 class="h4_primary">Name:{{ getSelectedWeapon()?.displayName }}</h3>
+                <h5>Cost:${{ getSelectedWeapon()?.shopData.cost }}</h5>
+                <p>Megazine:{{ getSelectedWeapon()?.weaponStats.magazineSize}}</p>
+                <p>Fire Rate:{{ getSelectedWeapon()?.weaponStats.fireRate}}</p>
+                <p>Reload:{{ getSelectedWeapon()?.weaponStats.reloadTimeSeconds}}</p>
+                <p>Penetration:{{ getSelectedWeapon()?.weaponStats.wallPenetration.split('::').pop()}}</p>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <div>
+                    <h3>Range</h3>
+                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[0].rangeStartMeters.toString().slice(0, 2) }}</div>
+                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[1].rangeStartMeters.toString().slice(0, 2) }}</div>
+                </div>
+                <div>
+                    <h3>Head</h3>
+                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[0].headDamage.toString().slice(0, 2) }}</div>
+                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[1].headDamage.toString().slice(0, 2) }}</div>
+                </div>
+                <div>
+                    <h3>Body</h3>
+                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[0].bodyDamage.toString().slice(0, 2) }}</div>
+                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[1].bodyDamage.toString().slice(0, 2) }}</div>
+                </div>
+                <div>
+                    <h3>Leg</h3>
+                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[0].legDamage.toString().slice(0, 2) }}</div>
+                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[1].legDamage.toString().slice(0, 2) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 

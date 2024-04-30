@@ -3,32 +3,58 @@ import { Component, inject } from '@angular/core';
 import { WeaponsServide } from '../services/weapons.service';
 
 @Component({
-  selector: 'app-weapons',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './weapons.component.html',
-  styleUrl: './weapons.component.scss'
+    selector: 'app-weapons',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './weapons.component.html',
+    styleUrl: './weapons.component.scss'
 })
 export class WeaponsComponent {
 
-  dataWeapons: any;
+    dataWeapons: any;
+    uuidWeapon: string | null = null;
 
-  constructor(private mapService: WeaponsServide) { }
+    constructor(private weaponsService: WeaponsServide) { }
 
-  ngOnInit(): void {
-      this.getWeapons();
-  }
+    ngOnInit(): void {
+        this.getWeapons();
+    }
 
-  getWeapons(): void {
-      this.mapService.getWeapons().subscribe({
-          next: (dataWeapons) => {
-              console.log(dataWeapons);
-              this.dataWeapons = dataWeapons;
-          },
-          error: (error) => {
-              console.error('Error al obtener datos de las armas:', error);
-          }
-      });
-  }
+    getWeapons(): void {
+        this.weaponsService.getWeapons().subscribe({
+            next: (dataWeapons) => {
+                console.log(dataWeapons);
+                this.dataWeapons = dataWeapons;
+            },
+            error: (error) => {
+                console.error('Error al obtener datos de las armas:', error);
+            }
+        });
+    }
+
+    filteredWeapons(category: string): any[] {
+        if (!this.dataWeapons || !this.dataWeapons.data) {
+            return [];
+        }
+        return this.dataWeapons.data.filter((weapon: any) => {
+            return weapon.category === `EEquippableCategory::${category}`;
+        });
+    }
+
+    getSelectedWeapon(): any {
+        if (!this.dataWeapons || !this.dataWeapons.data || !this.uuidWeapon) {
+            return null;
+        }
+        return this.dataWeapons.data.find((weapon: any) => {
+            return weapon.uuid === this.uuidWeapon;
+        });
+    }
+
+    weaponUUID(uuid: string): void {
+        this.uuidWeapon = uuid;
+        console.log('Weapon selected:', uuid);
+    }
+
 }
+
 

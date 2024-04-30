@@ -1,10 +1,26 @@
 * {box-sizing: border-box;}
 
+#margin_top {
+    margin-top: 30px;
+}
+.overflow {
+    max-height: 320px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 2px;
+    }
+}
+
 .sect_principal {
     height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     .container_weapons {
+        display: flex;
         padding: 40px;
-        .file_1 {
+        .file_1, .file_2, .file_3, .file_4 {
             width: 230px;
             .lap1 {  
                 h2 {
@@ -19,14 +35,18 @@
                     .weapon-card {
                         width: 100%;
                         height: 120px;
-                        background-color: #55555555;
+                        background-color: #55555567;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         margin-top: 8px;
                         position: relative;
+                        &:hover {
+                            background-color: #8bdbca53;
+                            border: 3px solid #8BDBCA;
+                        }
                         img {
-                            width: 60%;
+                            width: 70%;
                         }
                         .Name_pr {
                             position: absolute;
@@ -41,11 +61,59 @@
                 }
             }
         }
-        .file_2 {}
-        .file_3 {}
-        .file_4 {}
+        .file_2 {
+            width: 250px;
+        }
+        .file_2, .file_4 {
+            margin-left: 60px;
+            .lap1 {
+                .lap2 {
+                    .weapon-card {
+                        height: 137.5px;
+                        img {
+                            width: 70%;
+                        }
+                    }
+                }
+            }
+        }
+        .file_3 {
+            margin-left: 10px;
+            display: block;
+            width: 260px;
+            .lap1 {
+                .lap2 {
+                    .weapon-card {
+                        height: 152px;
+                        img {
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+        }
+        .file_4 {  
+            margin-left: 10px;  
+            width: 290px;     
+        }
         .file_5 {}
 
     }
 
+    .preview_weapons {
+        width: 400px;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+        .weapon-card {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: column;
+            img {
+                width: 90%;
+            }
+        }
+    }
 }
