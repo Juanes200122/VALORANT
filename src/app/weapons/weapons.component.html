@@ -1,1 +1,82 @@
-<p>weapons works!</p>
+<!-- weapons.component.html -->
+
+<!-- weapons.component.html -->
+
+<div class="sect_principal">
+    <div class="container_weapons" *ngIf="dataWeapons">
+        <div class="file_1 SIDEARM">
+            <div class="lap1">
+                <h2>SIDEARM</h2>
+                <div *ngFor="let weapon of dataWeapons.data" class="lap2">
+                    <div *ngIf="weapon.category === 'EEquippableCategory::Sidearm'" class="weapon-card">
+                        <img src="{{ weapon.displayIcon }}" alt=""> 
+                        <div class="Name_pr">
+                            <h3 class="h4_primary">{{ weapon.displayName }}</h3>  
+                            <h5>${{ weapon.shopData.cost }}</h5>                       
+                        </div>
+                    </div>      
+                </div>
+            </div>
+        </div>
+        <div class="file_2 cont_dive"></div>
+        <div class="file_3 RIFLES"></div>
+        <div class="file_4 cont_dive"></div>
+        <div class="file_5 MEELE"></div>
+    </div> 
+
+ 
+</div>
+
+
+
+
+
+
+
+
+<!--
+    
+    EEquippableCategory::Heavy
+    EEquippableCategory::Rifle
+    EEquippableCategory::Shotgun
+    EEquippableCategory::Sidearms
+    EEquippableCategory::Sniper
+    EEquippableCategory::Rifle
+    EEquippableCategory::SMG
+    EEquippableCategory::Melee
+
+
+    <div *ngFor="let weapon of dataWeapons.data">
+        <h2>{{ weapon.category }}</h2>
+    </div>
+
+-->
+
+
+
+<!--<div>
+    <h2>HEAVY</h2>
+    <div *ngFor="let weapon of dataWeapons.data">
+        <div *ngIf="weapon.category === 'EEquippableCategory::Heavy'" class="weapon-card">
+            <img src="{{ weapon.displayIcon }}" alt="">
+        </div>      
+    </div>
+</div>
+
+<div>
+    <h2>RIFLES</h2>
+    <div *ngFor="let weapon of dataWeapons.data">
+        <div *ngIf="weapon.category === 'EEquippableCategory::Rifle'" class="weapon-card">
+            <img src="{{ weapon.displayIcon }}" alt="">
+        </div>      
+    </div>
+</div>
+
+<div>
+    <h2>escopetas</h2>
+    <div *ngFor="let weapon of dataWeapons.data">
+        <div *ngIf="weapon.category === 'EEquippableCategory::Shotgun'" class="weapon-card">
+            <img src="{{ weapon.displayIcon }}" alt="">
+        </div>      
+    </div>
+</div>-->

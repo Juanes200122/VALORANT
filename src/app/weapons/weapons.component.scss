@@ -1,0 +1,51 @@
+* {box-sizing: border-box;}
+
+.sect_principal {
+    height: calc(100vh - 60px);
+    .container_weapons {
+        padding: 40px;
+        .file_1 {
+            width: 230px;
+            .lap1 {  
+                h2 {
+                    background-color: #2edc6347;
+                    text-align: center;
+                    font-size: 15px;
+                    padding: 5px 0px;
+                    font-weight: bold;
+                    color: white;
+                }                                  
+                .lap2 {                         
+                    .weapon-card {
+                        width: 100%;
+                        height: 120px;
+                        background-color: #55555555;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 8px;
+                        position: relative;
+                        img {
+                            width: 60%;
+                        }
+                        .Name_pr {
+                            position: absolute;
+                            left: 10px;
+                            bottom: 10px;
+                            color: white;
+                            .h4_primary {
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .file_2 {}
+        .file_3 {}
+        .file_4 {}
+        .file_5 {}
+
+    }
+
+}

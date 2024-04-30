@@ -96,7 +96,7 @@
 
                     h4 {
                         position: absolute;
-                        top: 0;
+                        top: 60px;
                         left: -50px;
                         rotate: 90deg;
                         width: 100px;
@@ -176,14 +176,18 @@
             border-bottom: 1px solid #1F2326;
             border-right: 3px solid #1F2326;
         }
+        &:hover:after {
+            height: 75%;
+        }
         &:after {
             content: '';
             position: absolute;
-            width: 100px;
-            height: 70%;
-            background-color: #1F2326;
+            width: 74px;
+            height: 35%;
+            background-color: #FF4656;
             right: 50px;
-            bottom: -2px;
+            bottom: 5px;
+            transition: height 0.5s ease-in-out;
         }
 
         .description {
@@ -211,7 +215,7 @@
             position: relative;
             padding: 20px;
             img {
-                width: 100px;
+                width: 60px;
                 mix-blend-mode: difference;
             }
         }

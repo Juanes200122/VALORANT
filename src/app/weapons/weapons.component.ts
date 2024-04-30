@@ -1,32 +1,34 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { AgentsService } from '../services/agents.service';
+import { WeaponsServide } from '../services/weapons.service';
 
 @Component({
   selector: 'app-weapons',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './weapons.component.html',
   styleUrl: './weapons.component.scss'
 })
 export class WeaponsComponent {
 
-  _agent=  inject(AgentsService)
+  dataWeapons: any;
 
-  data: any= '';
+  constructor(private mapService: WeaponsServide) { }
 
-  constructor(
-   
-  ){
-    this.getItems();
+  ngOnInit(): void {
+      this.getWeapons();
   }
 
-  getItems(){
-    this._agent.getItems().subscribe({
-      next: (data) => {
-        console.log(data);
-        this.data = data;
-      }
-    })
+  getWeapons(): void {
+      this.mapService.getWeapons().subscribe({
+          next: (dataWeapons) => {
+              console.log(dataWeapons);
+              this.dataWeapons = dataWeapons;
+          },
+          error: (error) => {
+              console.error('Error al obtener datos de las armas:', error);
+          }
+      });
   }
 }
 

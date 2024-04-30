@@ -1,11 +1,11 @@
 
 
-<div class="container">
+<!--<div class="container">
     <div class="lap1">
         <div id="previuw_page">
             <h2 id="tittle_page">AGENTS</h2>
         </div>
-        <div class="container_agents" *ngIf="data">
+        <div class="container_agents" *ngIf="data" #contenedor (mouseenter)="AddScroll()" (mouseleave)="DropScroll()">
             <div class="card" *ngFor="let agent of data.data" id="{{ agent.uuid }}" (click)="guardarUuid(agent.uuid)">
                 <div class="displayName">
                     <h4>{{ agent.displayName }}</h4>
@@ -30,8 +30,7 @@
             </div>        
         </div>
     </div>
-</div>
-
+</div>-->
 
 
 

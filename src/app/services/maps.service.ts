@@ -5,13 +5,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AgentsService {
+export class MapService {
 
   constructor(
     private _http:HttpClient
   ) { }
 
-  public getItems(): Observable<any>{
-    return this._http.get('https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=es-ES');
+  public getMaps(): Observable<any>{
+    return this._http.get('https://valorant-api.com/v1/maps');
   }
 }
