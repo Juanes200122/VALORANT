@@ -55,6 +55,8 @@ export class WeaponsComponent {
         console.log('Weapon selected:', uuid);
     }
 
+    
+
 }
 
 
