@@ -95,94 +95,67 @@
 
     <div class="preview_weapons">
         <div *ngIf="uuidWeapon" class="weapon-card">
-            <h1>Wepons Details</h1>
-            <img [src]="getSelectedWeapon()?.killStreamIcon" alt="">
-            <div class="Name_pr">
-                <h3 class="h4_primary">Name:{{ getSelectedWeapon()?.displayName }}</h3>
-                <h5>Cost:${{ getSelectedWeapon()?.shopData.cost }}</h5>
-                <p>Megazine:{{ getSelectedWeapon()?.weaponStats.magazineSize}}</p>
-                <p>Fire Rate:{{ getSelectedWeapon()?.weaponStats.fireRate}}</p>
-                <p>Reload:{{ getSelectedWeapon()?.weaponStats.reloadTimeSeconds}}</p>
-                <p>Penetration:{{ getSelectedWeapon()?.weaponStats.wallPenetration.split('::').pop()}}</p>
+            <div class="block_image">
+                <img [src]="getSelectedWeapon()?.displayIcon" alt="">
             </div>
-            <div style="display: flex; gap: 20px;">
+            <div class="category_weapons">
+                <div class="h4_primary">{{ getSelectedWeapon()?.displayName }}</div>
+                <div class="element_space">
+                    <span>Cost:$</span>
+                    <span>{{ getSelectedWeapon()?.shopData.cost }}</span>
+                </div>
+                <div class="element_space">
+                    <span>Megazine:</span>
+                    <span>{{ getSelectedWeapon()?.weaponStats.magazineSize}}</span>
+                </div>
+                <div class="element_space">
+                    <span>Fire Rate:</span>
+                    <span>{{ getSelectedWeapon()?.weaponStats.fireRate}}</span>
+                </div>
+                <div class="element_space">
+                    <span>Reload:</span>
+                    <span>{{ getSelectedWeapon()?.weaponStats.reloadTimeSeconds}}</span>
+                </div>
+                <div class="element_space">
+                    <span>Penetration:</span>
+                    <span>{{ getSelectedWeapon()?.weaponStats.wallPenetration.split('::').pop()}}</span>
+                </div>
+            </div>
+
+            <h3 class="damage">Damage:</h3>
+            <div class="element_damage">
+                <!-- Columna para Rango -->
                 <div>
                     <h3>Range</h3>
-                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[0].rangeStartMeters.toString().slice(0, 2) }}</div>
-                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[1].rangeStartMeters.toString().slice(0, 2) }}</div>
+                    <ng-container *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
+                        <div>{{ range.rangeStartMeters.toString().slice(0, 2) }}</div>
+                    </ng-container>
                 </div>
+            
+                <!-- Columna para Head Damage -->
                 <div>
                     <h3>Head</h3>
-                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[0].headDamage.toString().slice(0, 2) }}</div>
-                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[1].headDamage.toString().slice(0, 2) }}</div>
+                    <ng-container *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
+                        <div>{{ range.headDamage.toString().slice(0, 2) }}</div>
+                    </ng-container>
                 </div>
+            
+                <!-- Columna para Body Damage -->
                 <div>
                     <h3>Body</h3>
-                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[0].bodyDamage.toString().slice(0, 2) }}</div>
-                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[1].bodyDamage.toString().slice(0, 2) }}</div>
+                    <ng-container *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
+                        <div>{{ range.bodyDamage.toString().slice(0, 2) }}</div>
+                    </ng-container>
                 </div>
+            
+                <!-- Columna para Leg Damage -->
                 <div>
                     <h3>Leg</h3>
-                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[0].legDamage.toString().slice(0, 2) }}</div>
-                    <div>{{ getSelectedWeapon()?.weaponStats.damageRanges[1].legDamage.toString().slice(0, 2) }}</div>
+                    <ng-container *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
+                        <div>{{ range.legDamage.toString().slice(0, 2) }}</div>
+                    </ng-container>
                 </div>
-            </div>
+            </div>                        
         </div>
     </div>
-
-
 </div>
-
-
-
-
-
-
-
-
-<!--
-    
-    EEquippableCategory::Heavy
-    EEquippableCategory::Rifle
-    EEquippableCategory::Shotgun
-    EEquippableCategory::Sidearms
-    EEquippableCategory::Sniper
-    EEquippableCategory::Rifle
-    EEquippableCategory::SMG
-    EEquippableCategory::Melee
-
-
-    <div *ngFor="let weapon of dataWeapons.data">
-        <h2>{{ weapon.category }}</h2>
-    </div>
-
--->
-
-
-
-<!--<div>
-    <h2>HEAVY</h2>
-    <div *ngFor="let weapon of dataWeapons.data">
-        <div *ngIf="weapon.category === 'EEquippableCategory::Heavy'" class="weapon-card">
-            <img src="{{ weapon.displayIcon }}" alt="">
-        </div>      
-    </div>
-</div>
-
-<div>
-    <h2>RIFLES</h2>
-    <div *ngFor="let weapon of dataWeapons.data">
-        <div *ngIf="weapon.category === 'EEquippableCategory::Rifle'" class="weapon-card">
-            <img src="{{ weapon.displayIcon }}" alt="">
-        </div>      
-    </div>
-</div>
-
-<div>
-    <h2>escopetas</h2>
-    <div *ngFor="let weapon of dataWeapons.data">
-        <div *ngIf="weapon.category === 'EEquippableCategory::Shotgun'" class="weapon-card">
-            <img src="{{ weapon.displayIcon }}" alt="">
-        </div>      
-    </div>
-</div>-->
