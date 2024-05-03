@@ -13,11 +13,26 @@ export class WeaponsComponent {
 
     dataWeapons: any;
     uuidWeapon: string | null = null;
+    showSkins: boolean = false;    
+    clickedClass: string | null = null; // Variable para almacenar la clase capturada al hacer clic
+
 
     constructor(private weaponsService: WeaponsServide) { }
-
+    
+    handleBlockImageClick(event: MouseEvent, extractedClass: string) {
+        this.clickedClass = extractedClass; // Almacena la clase capturada al hacer clic
+        console.log(extractedClass);        
+    }
+    
     ngOnInit(): void {
         this.getWeapons();
+    }
+
+    toggleSkins() {
+        this.showSkins = !this.showSkins;
+    }
+    toggleClose() {
+        this.showSkins = !this.showSkins;
     }
 
     getWeapons(): void {
@@ -31,6 +46,18 @@ export class WeaponsComponent {
             }
         });
     }
+
+    // En tu componente TypeScript
+extractIdFromUrl(url: string): string {
+    if (!url) return ''; // Maneja casos donde la URL está vacía o es null/undefined
+
+    // Encuentra el último segmento del URL que contiene el ID
+    const segments = url.split('/');
+    const id = segments[segments.length - 2]; // Obtiene el penúltimo segmento del URL
+
+    return id ? `${id}` : ''; // Retorna una clase como 'id-89be9866-4807-6235-2a95-499cd23828df'
+}
+
 
     filteredWeapons(category: string): any[] {
         if (!this.dataWeapons || !this.dataWeapons.data) {
@@ -54,6 +81,7 @@ export class WeaponsComponent {
         this.uuidWeapon = uuid;
         console.log('Weapon selected:', uuid);
     }
+
 
     
 

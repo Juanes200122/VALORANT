@@ -97,9 +97,9 @@
     <div class="preview_weapons">
         <div *ngIf="uuidWeapon" class="weapon-card">
             <div class="block_image">
-                <img [src]="getSelectedWeapon()?.displayIcon" alt="" 
-                     [ngStyle]="{'width': (getSelectedWeapon()?.category === 'EEquippableCategory::Sidearm') ? '60%' : '90%'}">
-            </div>                                   
+                <img [src]="getSelectedWeapon()?.displayIcon" alt=""
+                    [ngStyle]="{'width': (getSelectedWeapon()?.category === 'EEquippableCategory::Sidearm') ? '60%' : '90%'}">
+            </div>
             <div class="h4_primary">{{ getSelectedWeapon()?.displayName }}</div>
             <div class="category_weapons">
                 <div class="element_space">
@@ -122,50 +122,79 @@
                     <span class="elementName">Penetration:</span>
                     <span>{{ getSelectedWeapon()?.weaponStats.wallPenetration.split('::').pop()}}</span>
                 </div>
-            <div class="element_damage">
-                <!-- Columna para Rango -->
-                <div>
-                    <h3 class="elementName">Range</h3>
-                    <ng-container *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
-                        <div>{{ range.rangeStartMeters.toString().slice(0, 2) }}</div>
-                    </ng-container>
+                <div class="element_damage">
+                    <!-- Columna para Rango -->
+                    <div>
+                        <h3 class="elementName">Range</h3>
+                        <ng-container
+                            *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
+                            <div>{{ range.rangeStartMeters.toString().slice(0, 2) }}</div>
+                        </ng-container>
+                    </div>
+
+                    <!-- Columna para Head Damage -->
+                    <div>
+                        <h3 class="elementName">Head</h3>
+                        <ng-container
+                            *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
+                            <div>{{ range.headDamage.toString().slice(0, 2) }}</div>
+                        </ng-container>
+                    </div>
+
+                    <!-- Columna para Body Damage -->
+                    <div>
+                        <h3 class="elementName">Body</h3>
+                        <ng-container
+                            *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
+                            <div>{{ range.bodyDamage.toString().slice(0, 2) }}</div>
+                        </ng-container>
+                    </div>
+
+                    <!-- Columna para Leg Damage -->
+                    <div>
+                        <h3 class="elementName">Leg</h3>
+                        <ng-container
+                            *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
+                            <div>{{ range.legDamage.toString().slice(0, 2) }}</div>
+                        </ng-container>
+                    </div>
                 </div>
-            
-                <!-- Columna para Head Damage -->
-                <div>
-                    <h3 class="elementName">Head</h3>
-                    <ng-container *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
-                        <div>{{ range.headDamage.toString().slice(0, 2) }}</div>
-                    </ng-container>
-                </div>
-            
-                <!-- Columna para Body Damage -->
-                <div>
-                    <h3 class="elementName">Body</h3>
-                    <ng-container *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
-                        <div>{{ range.bodyDamage.toString().slice(0, 2) }}</div>
-                    </ng-container>
-                </div>
-            
-                <!-- Columna para Leg Damage -->
-                <div>
-                    <h3 class="elementName">Leg</h3>
-                    <ng-container *ngFor="let range of getSelectedWeapon()?.weaponStats.damageRanges.slice(0, 2); let i = index">
-                        <div>{{ range.legDamage.toString().slice(0, 2) }}</div>
-                    </ng-container>
-                </div>
-            </div>     
-            </div>                               
+                <button (click)="toggleSkins()">View Skins</button>
+            </div>
         </div>
     </div>
 </div>
 
-<ng-container *ngFor="let dataName of dataWeapons.data">
-    <ng-container *ngFor="let skin of dataName.skins; let i = index">
-        <ng-container *ngIf="getSelectedWeapon()?.displayName && skin.displayName.startsWith(getSelectedWeapon()?.displayName)">
-            <div style="display: flex; flex-direction: row;">
-                <img [src]="skin.displayIcon" alt="{{ skin.displayName }}" [style.display]="skin.displayIcon ? 'flex' : 'none'" width="100px">
-            </div>
-        </ng-container>
-    </ng-container>
-</ng-container>
+
+
+
+<div class="block_absolute" [style.display]="showSkins ? 'flex' : 'none'">
+    <button (click)="toggleClose()" style="cursor: pointer; position: relative; z-index: 9999;">cerrar modal</button>
+    <div class="block_preview--skins" *ngFor="data of dataWeapons.data">
+        <ng-container *ngFor="let data of dataWeapons.data">
+            <ng-container *ngFor="let skin of data.skins">
+              <img *ngIf="extractIdFromUrl(skin.displayIcon) === clickedClass"
+                   [src]="skin.displayIcon"
+                   alt="{{ skin.displayName }}"
+                   [style.display]="skin.displayIcon ? 'flex' : 'none'">
+            </ng-container>
+        </ng-container>    
+    </div>
+    <div class="block_skins">
+        <div class="element_skins">
+            <ng-container *ngFor="let dataName of dataWeapons.data">
+                <ng-container *ngFor="let skin of dataName.skins; let i = index">
+                  <ng-container *ngIf="getSelectedWeapon()?.displayName && skin.displayName.startsWith(getSelectedWeapon()?.displayName)">
+                    <div class="block_weapons"
+                      [id]="'skin-' + getSelectedWeapon()?.displayName.toLowerCase() + '-' + dataName.id + '-' + i"
+                      [class.bloque_image]="true"
+                      [ngClass]="extractIdFromUrl(skin.displayIcon)"
+                      (click)="handleBlockImageClick($event, extractIdFromUrl(skin.displayIcon))">
+                      <img [src]="skin.displayIcon" alt="{{ skin.displayName }}" [style.display]="skin.displayIcon ? 'flex' : 'none'">
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </ng-container>                              
+        </div>
+    </div>
+</div>

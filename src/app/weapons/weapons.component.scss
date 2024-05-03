@@ -10,6 +10,33 @@
         width: 2px;
     }
 }
+#skin-frenzy-undefined-39,
+#skin-classic-undefined-42,
+#skin-ghost-undefined-37,
+#skin-sheriff-undefined-39,
+#skin-shorty-undefined-25,
+#skin-spectre-undefined-48,
+#skin-stinger-undefined-28,
+#skin-judge-undefined-35,
+#skin-bucky-undefined-31,
+#skin-vandal-undefined-63,
+#skin-bulldog-undefined-34,
+#skin-phantom-undefined-66,
+#skin-guardian-undefined-18,
+#skin-guardian-undefined-38,
+#skin-guardian-undefined-42,
+#skin-operator-undefined-43,
+#skin-marshal-undefined-30,
+#skin-marshal-undefined-32,
+#skin-odin-undefined-23,
+#skin-ares-undefined-35,
+#skin-judge-undefined-10,
+#skin-judge-undefined-7,
+#skin-bulldog-undefined-23,
+#skin-bulldog-undefined-2,
+#skin-operator-undefined-32 {
+    display: none !important;
+}
 
 .block {
     display: flex;
@@ -191,6 +218,62 @@
                 .elementName {
                     color: #FF4655;
                     margin: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.block_absolute {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #191919;
+    background-image: url('../../assets/image/fondo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 999;
+    .block_preview--skins {
+        width: 100%;
+        height: 70vh !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        img {
+            width: 40%;
+        }
+    }
+    
+    .block_skins {
+        margin-top: 70vh;
+        height: 28vh;
+        overflow: auto;
+        .element_skins {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: max-content;
+            padding: 0px 30px;
+            .block_weapons {
+                background: #191919;
+                width: 120px !important;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                img {
+                    rotate: 70deg;
+                    width: 170px;
                 }
             }
         }
