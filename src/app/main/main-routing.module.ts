@@ -15,7 +15,7 @@ const routes: Routes = [
                 path: '',
                 pathMatch: 'full',
                 component: HomepageComponent,
-            },
+            },        
             {
                 path: 'homepage',
                 redirectTo: '',
@@ -32,7 +32,7 @@ const routes: Routes = [
                 path: 'agents',
                 component: AgentsComponent,
             },
-        ],
+        ], 
     },
 ];
 

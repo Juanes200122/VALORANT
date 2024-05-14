@@ -81,10 +81,6 @@ extractIdFromUrl(url: string): string {
         this.uuidWeapon = uuid;
         console.log('Weapon selected:', uuid);
     }
-
-
-    
-
 }
 
 

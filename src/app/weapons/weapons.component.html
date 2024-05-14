@@ -1,7 +1,3 @@
-<!-- weapons.component.html -->
-
-<!-- weapons.component.html -->
-
 <div class="sect_principal">
     <div class="container_weapons" *ngIf="dataWeapons">
         <div class="file_1 SIDEARM">
@@ -184,17 +180,17 @@
         <div class="element_skins">
             <ng-container *ngFor="let dataName of dataWeapons.data">
                 <ng-container *ngFor="let skin of dataName.skins; let i = index">
-                  <ng-container *ngIf="getSelectedWeapon()?.displayName && skin.displayName.startsWith(getSelectedWeapon()?.displayName)">
-                    <div class="block_weapons"
-                      [id]="'skin-' + getSelectedWeapon()?.displayName.toLowerCase() + '-' + dataName.id + '-' + i"
-                      [class.bloque_image]="true"
-                      [ngClass]="extractIdFromUrl(skin.displayIcon)"
-                      (click)="handleBlockImageClick($event, extractIdFromUrl(skin.displayIcon))">
-                      <img [src]="skin.displayIcon" alt="{{ skin.displayName }}" [style.display]="skin.displayIcon ? 'flex' : 'none'">
-                    </div>
-                  </ng-container>
+                    <ng-container *ngIf="getSelectedWeapon()?.displayName && skin.displayName.startsWith(getSelectedWeapon()?.displayName)">
+                        <div class="block_weapons"
+                        [id]="'skin-' + getSelectedWeapon()?.displayName.toLowerCase() + '-' + dataName.id + '-' + i"
+                        [class.bloque_image]="true"
+                        [ngClass]="extractIdFromUrl(skin.displayIcon)"
+                        (click)="handleBlockImageClick($event, extractIdFromUrl(skin.displayIcon))">
+                            <img [src]="skin.displayIcon" alt="{{ skin.displayName }}" [style.display]="skin.displayIcon ? 'flex' : 'none'">
+                        </div>
+                    </ng-container>
                 </ng-container>
-              </ng-container>                              
+            </ng-container>                              
         </div>
     </div>
 </div>
