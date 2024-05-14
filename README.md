@@ -15,6 +15,11 @@ Ejecuta `ng generate component nombre-componente` para generar un nuevo componen
 Ejecuta `ng build` para compilar el proyecto. Los artefactos de compilación se almacenarán en el directorio `dist/`.
 
 
+## Vista de agents
+En el componente agents.component, creamos una carpeta de servicios para consumir la API de Valorant. Luego, en el HTML, accedemos al objeto y recorremos los datos.<br>
+<img align="right" src="src/assets/image/riotGame.PNG" width="380" />
+
+<br><br><br><br><br>
 
 ## Recursos y Herramientas
 
